@@ -1,18 +1,28 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
 # date: 2023/4/15
-from flask import Flask
-from flask import url_for
+from flask import Flask,url_for,render_template
 from markupsafe import escape
 
 app = Flask(__name__)
 
+name = 'Yifei Ding'
+movies = [
+    {'title': 'My Neighbor Totoro', 'year': '1988'},
+    {'title': 'Dead Poets Society', 'year': '1989'},
+    {'title': 'A Perfect World', 'year': '1993'},
+    {'title': 'Leon', 'year': '1994'},
+    {'title': 'Mahjong', 'year': '1996'},
+    {'title': 'Swallowtail Butterfly', 'year': '1996'},
+    {'title': 'King of Comedy', 'year': '1999'},
+    {'title': 'Devils on the Doorstep', 'year': '1999'},
+    {'title': 'WALL-E', 'year': '2008'},
+    {'title': 'The Pork of Music', 'year': '2012'},
+]
 @app.route('/')
-def hello():
-    msg = 'Welcome to my first flask project：WatchList'
-    msg = '<h1>Welcome to my first flask project：WatchList</h1>' \
-          '<img src="http://helloflask.com/totoro.gif">'
-    return msg
+def index():
+    res = render_template('index.html',name=name,movies=movies)
+    return res
 
 
 @app.route('/user/<name>')
