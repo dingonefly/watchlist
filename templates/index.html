@@ -2,17 +2,22 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>{{name}}'s WatchList</title>
+    <title>{{ user.name }}'s WatchList</title>
+    <link rel="stylesheet" href="{{ url_for('static',filename='CSS/style.css') }}">
 </head>
 <body>
-    <h2>{{ name}}'s WatchList</h2>
+    <h2>
+        <img class="avatar" src="{{ url_for('static',filename='images/avatar.png') }}" alt="Avatar">
+        {{ user.name }}'s WatchList
+    </h2>
     {# length過濾器#}
     <p>{{ movies|length }} Titles</p>
-    <ul>
+    <ul class="movie-list">
         {% for movie in movies %}
         <li>{{ movie.title }} - {{ movie.year }}</li>
         {% endfor %}
     </ul>
+    <img class='totoro' src="{{ url_for('static',filename='images/totoro.gif') }}" alt="Walking Totoro">
     <footer>
         <small>&copy; 2023 <a href="https://www.baidu.com/">baidu</a></small>
     </footer>
