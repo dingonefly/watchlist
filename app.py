@@ -70,11 +70,15 @@ def forge():
     db.session.commit()
     click.echo('Done.')
 
+@app.context_processor
+def inject_user():
+    user = User.query.first()
+    return dict(user=user)
 @app.route('/')
 def index():
     user = User.query.first()
     movies = Movie.query.all()
-    res = render_template('index.html',user=user,movies=movies)
+    res = render_template('index.html',movies=movies)
     return res
 
 
@@ -99,4 +103,7 @@ def test_url_for():
 
     return msg
 
-
+@app.errorhandler(404)
+def errorpage(e):
+    user = User.query.first()
+    return render_template('404.html',)
