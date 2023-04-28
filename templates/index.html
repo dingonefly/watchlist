@@ -3,10 +3,20 @@
 {% block content %}
     {# length過濾器#}
     <p>{{ movies|length }} Titles</p>
+    <form method="post">
+            Name <input type="text" name="title" autocomplete="False" required>
+            Year <input type="text" name="year" autocomplete="False" required>
+            <input type="submit" name="submit" class="btn" value="Add">
+    </form>
     <ul class="movie-list">
         {% for movie in movies %}
         <li>{{ movie.title }} - {{ movie.year }}
+
             <span class="float-right">
+                <a class="btn" href="{{ url_for('edit', movie_id=movie.id) }}">Edit</a>
+                <form action="{{ url_for('delete',movie_id=movie.id) }}" method="post" class="inline-form">
+                    <input type="submit" name="submit" class="btn" value="Delete" onclick="return 'Are you confirm?'">
+                </form>
                 <a class="imdb" href="https://www.imdb.com/find?q={{ movie.title }}" target="_blank" title="Find this movie on IMDb">IMDb</a>
             </span>
         </li>

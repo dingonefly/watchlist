@@ -1,0 +1,11 @@
+{% extends 'base.html' %}
+
+{% block content %}
+    <p3>Edit item</p3>
+    <form action="{{ url_for('edit',movie_id=movie.id) }}" method="post">
+            Name <input type="text" name="title" autocomplete="False" required value="{{ movie.title }}">
+            Year <input type="text" name="year" autocomplete="False" required value="{{ movie.year }}">
+            <input type="submit" name="submit" class="btn" value="Update">
+    </form>
+    <img class='totoro' src="{{ url_for('static',filename='images/totoro.gif') }}" alt="Walking Totoro">
+{% endblock %}
