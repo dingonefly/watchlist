@@ -1,0 +1,10 @@
+{% extends 'base.html' %}
+
+{% block content %}
+    <h3>Settings</h3>
+    <form method="post" action="{{ url_for('settings') }}">
+            Name <input type="text" name="name" autocomplete="False" required>
+            <input type="submit" name="submit" class="btn" value="Modify">
+    </form>
+    <img class='totoro' src="{{ url_for('static',filename='images/totoro.gif') }}" alt="Walking Totoro">
+{% endblock %}
