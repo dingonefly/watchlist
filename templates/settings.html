@@ -4,7 +4,7 @@
     <h3>Settings</h3>
     <form method="post" action="{{ url_for('settings') }}">
             Name <input type="text" name="name" autocomplete="False" required>
-            <input type="submit" name="submit" class="btn" value="Modify">
+            <input type="submit" name="submit" class="btn" value="Save">
     </form>
     <img class='totoro' src="{{ url_for('static',filename='images/totoro.gif') }}" alt="Walking Totoro">
 {% endblock %}
