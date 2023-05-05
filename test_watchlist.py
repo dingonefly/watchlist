@@ -2,8 +2,9 @@
 # -*- coding: utf-8 -*-
 # date: 2023/5/5
 import unittest
-
-from app import app,db,User,Movie, forge, initdb
+from watchlist import app, db
+from watchlist.models import Movie, User
+from watchlist.commands import forge, initdb
 
 class WatchlistTestCase(unittest.TestCase):
 
