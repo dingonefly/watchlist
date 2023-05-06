@@ -129,3 +129,39 @@ input[name=year] {
 .inline-form {
     display: inline;
 }
+
+#message-board {
+  width: 500px;
+  margin: 0 auto;
+  padding: 20px;
+  border: 1px solid #ccc;
+  background-color: #f5f5f5;
+}
+
+.post {
+  clear: both;
+  margin-bottom: 20px;
+}
+
+.post .title {
+  font-size: 18px;
+  font-weight: bold;
+  float: left;
+}
+
+.post .content {
+  margin-left: 50px;
+}
+
+.post .avatar {
+  float: left;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+}
+
+.post:after {
+  content: "";
+  display: table;
+  clear: both;
+}

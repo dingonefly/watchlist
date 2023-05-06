@@ -1,0 +1,21 @@
+{% extends 'base.html' %}
+
+{% block content %}
+    <p>Edit Message</p>
+    <form action="{{ url_for('message_board') }}" method="post">
+            姓名 <input type="text" name="username" autocomplete="False" required >
+            留言 <input type="text" name="message" autocomplete="False" required >
+            <input type="submit" name="submit" class="btn" value="提交">
+    </form>
+    <p>Message Board</p>
+    <ul class="movie-list">
+        {% for message in messages %}
+        <li>{{ message.username }}
+            {{ message.message }}
+            {{ message.create_time }}
+        </li>
+
+        {% endfor %}
+    </ul>
+    <img class='totoro' src="{{ url_for('static',filename='images/totoro.gif') }}" alt="Walking Totoro">
+{% endblock %}

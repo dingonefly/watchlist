@@ -5,7 +5,7 @@
 from flask import url_for, render_template, request, flash, redirect
 from flask_login import login_user, logout_user, login_required, current_user
 
-from watchlist.models import User, Movie
+from watchlist.models import User, Movie, Message
 from watchlist import db, app
 
 
@@ -109,3 +109,21 @@ def delete(movie_id):
     db.session.commit()
     flash('Item deleted.')
     return redirect(url_for('index'))
+
+@app.route('/message_board',methods=['GET','POST'])
+def message_board():
+    if request.method == 'POST':
+        username = request.form.get('username')
+        message = request.form.get('message')
+        if not username or not message or len(username) > 20:
+            flash('Invalid message.')
+            return redirect(url_for('message_board'))
+
+        message_ins = Message(username=username, message=message)
+        db.session.add(message_ins)
+        db.session.commit()
+        flash('Message created.')
+        return redirect(url_for('message_board'))
+
+    messages = Message.query.all()
+    return render_template('message_board.html',messages=messages)
