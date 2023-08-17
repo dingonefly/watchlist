@@ -52,11 +52,23 @@ Press CTRL+C to quit
  * Debugger is active!
  * Debugger PIN: 205-802-684
 ```
+或者
+```commandline
+(env) [root@xxx watchlist]#pip install gunicorn
+gunicorn -b localhost:5000 -w 4 wsgi:app
+```
 
 Production
 ```commandline
-gunicorn xxx
-待完成
+(env) [root@xxx watchlist]#sed -i 's/xxx/{yourname}/g' ./deploykit/watchlist.service
+cp ./deploykit/watchlist.service /etc/systemd/system/
+systemctl daemon-reload
+
+# 启动、查看、停止、重启
+systemctl start watchlist.service
+systemctl status watchlist.service
+systemctl stop watchlist.service
+systemctl restart watchlist.service
 ```
 
 6. 项目更新
