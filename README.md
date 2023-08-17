@@ -15,22 +15,22 @@ git -v
 ```
 2. 克隆项目
 ```commandline
-mkdir /home/xxx && cd /home/xxx/
+mkdir /home/yourname && cd /home/yourname/
 git clone https://github.com/dingonefly/watchlist.git
 ```
 
 3. 在项目根目录创建 .env 文件，写入
 ```commandline
-cd /home/xxx/watchlist
+cd /home/yourname/watchlist
 vi .env
 
-SECRET_KEY=3d6f45a5fc12445dbac2f59c3b6cxxxx  
+SECRET_KEY=3d6f45a5fc12445dbac2f59c3b6cyournamex  
 DATABASE_FILE=data-prod.db
 ```
 
 4. 新建虚拟环境
 ```commandline
-cd /home/xxx/watchlist
+cd /home/yourname/watchlist
 $ python3 -m venv env  # 创建虚拟环境
 $ . env/bin/activate  # 激活虚拟环境
 (env) $ pip install -r requirements.txt  # 安装所有依赖
@@ -41,7 +41,7 @@ $ . env/bin/activate  # 激活虚拟环境
 5. 启动项目
 Development
 ```commandline
-(env) [root@xxx watchlist]#  flask run
+(env) [root@yourname watchlist]#  flask run
  * Serving Flask app 'watchlist' (lazy loading)
  * Environment: development
  * Debug mode: on
@@ -54,13 +54,13 @@ Press CTRL+C to quit
 ```
 或者
 ```commandline
-(env) [root@xxx watchlist]#pip install gunicorn
+(env) [root@yourname watchlist]#pip install gunicorn
 gunicorn -b localhost:5000 -w 4 wsgi:app
 ```
 
 Production
 ```commandline
-(env) [root@xxx watchlist]#sed -i 's/yourname/{yourname}/g' ./deploykit/watchlist.service
+(env) [root@yourname watchlist]#sed -i 's/yourname/{yourname}/g' ./deploykit/watchlist.service
 cp ./deploykit/watchlist.service /etc/systemd/system/
 systemctl daemon-reload
 
