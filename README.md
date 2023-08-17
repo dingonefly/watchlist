@@ -15,6 +15,7 @@ git -v
 ```
 2. 克隆项目
 ```commandline
+
 mkdir -p /opt/website/logs && cd /opt/website/
 git clone https://github.com/dingonefly/watchlist.git
 ```
@@ -30,9 +31,10 @@ DATABASE_FILE=data-prod.db
 
 4. 新建虚拟环境
 ```commandline
-cd /opt/website/watchlist
+cd /opt/website/
 $ python3 -m venv env  # 创建虚拟环境
 $ . env/bin/activate  # 激活虚拟环境
+cd /opt/website/watchlist
 (env) $ pip install -r requirements.txt  # 安装所有依赖
 (env) $ flask initdb  # 初始化数据库
 (env) $ flask admin  # 创建管理员账户 admin/admin123
@@ -54,8 +56,7 @@ Press CTRL+C to quit
 ```
 或者
 ```commandline
-(env) [root@website watchlist]#pip install gunicorn
-gunicorn -b localhost:5000 -w 4 wsgi:app
+(env) [root@website watchlist]# gunicorn -b localhost:5000 -w 4 wsgi:app
 ```
 
 Production
@@ -76,3 +77,6 @@ systemctl restart watchlist.service
 $ cd watchlist
 $ git pull
 ```
+
+7. Q&A
+- 项目放在/home/yourname目录下，部署systemd服务的时候出现一个permission deny的错误，应该是SElinu没有关闭导致的，所以建议放在/opt/website下
