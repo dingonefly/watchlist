@@ -4,9 +4,9 @@ After=network.target
 
 
 [Service]
-WorkingDirectory=/home/yourname/watchlist/
-EnvironmentFile=/home/yourname/watchlist/.env
-ExecStart=/home/yourname/watchlist/env/bin/python3 /home/yourname/watchlist/env/bin/gunicorn -c gunicorn.py wsgi:app
+WorkingDirectory=/opt/website/watchlist/
+EnvironmentFile=/opt/website/watchlist/.env
+ExecStart=/opt/website/watchlist/env/bin/python3 /opt/website/watchlist/env/bin/gunicorn -c gunicorn.py wsgi:app
 
 ExecReload=/bin/kill -s HUP $MAINPID
 ExecStop=/bin/kill -s TERM $MAINPID

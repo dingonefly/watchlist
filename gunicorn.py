@@ -14,15 +14,15 @@ timeout = 60
 # 输出日志级别
 loglevel = 'debug'
 # 存放日志路径
-pidfile = "./logs/gunicorn.pid"
+pidfile = "/opt/website/logs/gunicorn.pid"
 # 存放日志路径
-accesslog = "./logs/gunicorn_access.log"
+accesslog = "/opt/website/logs/gunicorn_access.log"
 # 存放日志路径
-errorlog = "./logs/gunicorn_error.log"
+errorlog = "/opt/website/logs/gunicorn_error.log"
 # 是否以守护进程启动，默认false,将进程交给supervisor or systemctl管理
 # daemon = 'false'
 # 工作模式协程, gunicorn + apscheduler场景下，解决多worker运行定时任务重复执行的问题
-worker_class = 'gevent'
+# worker_class = 'gevent'
 # 设置最大并发量,默认 1000
 # worker_connections = 1000
 # preload_app = True
