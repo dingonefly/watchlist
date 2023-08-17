@@ -11,7 +11,7 @@ ExecStart=/opt/website/env/bin/python3 /opt/website/env/bin/gunicorn -c gunicorn
 ExecReload=/bin/kill -s HUP $MAINPID
 ExecStop=/bin/kill -s TERM $MAINPID
 PrivateTmp=true
-Restart=always
+Restart=on-failure
 
 
 [Install]

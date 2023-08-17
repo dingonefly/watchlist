@@ -56,12 +56,15 @@ Press CTRL+C to quit
 ```
 或者
 ```commandline
+ln -sf /opt/website/env/bin/gunicorn /usr/bin/gunicorn(可选)
+
 (env) [root@website watchlist]# gunicorn -b localhost:5000 -w 4 wsgi:app
 ```
 
 Production
 ```commandline
 (env) [root@website watchlist]#
+
 cp ./deploykit/watchlist.service /etc/systemd/system/
 systemctl daemon-reload
 
@@ -71,12 +74,19 @@ systemctl status watchlist.service
 systemctl stop watchlist.service
 systemctl restart watchlist.service
 ```
-
-6. 项目更新
+6. Nginx配置
+```commandline
+yum install nginx
+mv /opt/nginx/conf.d/default.conf /opt/nginx/conf.d/default.conf.bak
+mv ./deploykit/nginx_watchlist.conf /opt/nginx/conf.d/
+systemctl start nginx
+systemctl status nginx
+```
+7. 项目更新
 ```commandline
 $ cd watchlist
 $ git pull
 ```
 
-7. Q&A
+8. Q&A
 - 项目放在/home/yourname目录下，部署systemd服务的时候出现一个permission deny的错误，应该是SElinu没有关闭导致的，所以建议放在/opt/website下
