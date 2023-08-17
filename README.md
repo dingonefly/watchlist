@@ -60,7 +60,7 @@ gunicorn -b localhost:5000 -w 4 wsgi:app
 
 Production
 ```commandline
-(env) [root@xxx watchlist]#sed -i 's/xxx/{yourname}/g' ./deploykit/watchlist.service
+(env) [root@xxx watchlist]#sed -i 's/yourname/{yourname}/g' ./deploykit/watchlist.service
 cp ./deploykit/watchlist.service /etc/systemd/system/
 systemctl daemon-reload
 

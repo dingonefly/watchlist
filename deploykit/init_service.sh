@@ -1,1 +1,1 @@
-sed -i 's/xxx/{yourname}/g' watchlist.service
+sed -i 's/yourname/{yourname}/g' watchlist.service
