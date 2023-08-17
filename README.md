@@ -9,6 +9,7 @@ tutorial: https://tutorial.helloflask.com/hello/
 ```commandline
 yum install python38
 python3 -V
+
 yum install git
 git -v
 ```
