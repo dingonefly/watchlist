@@ -6,6 +6,10 @@ tutorial: https://tutorial.helloflask.com/hello/
 ### 部署
 
 1. 系统安装python3.8或者以上版本
+```commandline
+yum install python38
+python3 -V
+```
 2. 克隆项目
 ```commandline
 cd /home/
@@ -35,4 +39,10 @@ $ . env/bin/activate  # 激活虚拟环境
 ```commandline
 gunicorn xxx
 待完成
+```
+
+6. 项目更新
+```commandline
+$ cd watchlist
+$ git pull
 ```
