@@ -8,12 +8,13 @@ from watchlist.models import User, Movie
 
 
 @app.cli.command()
-@click.option('--drop',is_flag = True,help='Create after drop.')
+@click.option('--drop', is_flag=True, help='Create after drop.')
 def initdb(drop):
     if drop:
         db.drop_all()
     db.create_all()
     click.echo('Initialized database.')
+
 
 @app.cli.command()
 def forge():
@@ -40,10 +41,12 @@ def forge():
 
     db.session.commit()
     click.echo('Done.')
+
+
 @app.cli.command()
-@click.option('--username',prompt=True,help='your name')
-@click.option('--password',prompt=True,hide_input=True,confirmation_prompt=True,help='your password')
-def admin(username,password):
+@click.option('--username', prompt=True, help='your name')
+@click.option('--password', prompt=True, hide_input=True, confirmation_prompt=True, help='your password')
+def admin(username, password):
     db.create_all()
 
     user = User.query.first()
@@ -53,7 +56,7 @@ def admin(username,password):
         user.set_password(password)
     else:
         click.echo('Create admin')
-        user = User(name='Admin',username=username)
+        user = User(name='Admin', username=username)
         user.set_password(password)
         db.session.add(user)
 
