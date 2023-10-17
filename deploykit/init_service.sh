@@ -1,1 +1,0 @@
-sed -i 's/yourname/{yourname}/g' watchlist.service
